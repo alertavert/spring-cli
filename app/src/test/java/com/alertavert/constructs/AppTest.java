@@ -3,12 +3,21 @@
  */
 package com.alertavert.constructs;
 
+import com.alertavert.constructs.configuration.ApplicationConfiguration;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
+
 import static org.junit.jupiter.api.Assertions.*;
 
+@SpringBootTest
+@ActiveProfiles("test")
 class AppTest {
-    @Test void appHasAGreeting() {
-        App classUnderTest = new App();
-        assertNotNull(classUnderTest.getGreeting(), "app should have a greeting");
+    @Autowired
+    ApplicationConfiguration configuration;
+
+    @Test void hasUri() {
+        assertEquals("mongodb://getcruise.com:8080/test-data", configuration.dbUri());
     }
 }

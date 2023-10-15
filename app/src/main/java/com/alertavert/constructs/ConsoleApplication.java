@@ -1,11 +1,9 @@
 package com.alertavert.constructs;
 
-import com.alertavert.constructs.configuration.ApplicationConfiguration;
+import jakarta.annotation.PostConstruct;
 import lombok.extern.java.Log;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.PostConstruct;
 
 /**
  * <h3>ConsoleApplication</h3>
@@ -16,15 +14,17 @@ import javax.annotation.PostConstruct;
 @Log
 public class ConsoleApplication {
 
-  @Autowired
-  String dbUri;
+  private final String dbUri;
+  private final int clusterSize;
 
-  @Autowired
-  int clusterSize;
+  public ConsoleApplication(String dbUri, int clusterSize) {
+    this.dbUri = dbUri;
+    this.clusterSize = clusterSize;
+  }
 
   @PostConstruct
   public void execute() {
-    log.info("Connecting to: " + dbUri);
-    log.info("Running size: " + clusterSize);
+    log.info("🛠️ Connecting to: " + dbUri);
+    log.info("⚙️Running size: " + clusterSize);
   }
 }

@@ -1,6 +1,5 @@
 package com.alertavert.constructs.configuration;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -8,18 +7,18 @@ import org.springframework.context.annotation.Configuration;
 /**
  * <h3>ApplicationConfiguration</h3>
  *
- * <p>Insert class description here...
- *
  * @author M. Massenzio, 2021-10-27
  */
 @Configuration
 public class ApplicationConfiguration {
+  private final ApplicationProperties properties;
 
   @Value("${cluster.size}")
   int clusterSize;
 
-  @Autowired
-  ApplicationProperties properties;
+  public ApplicationConfiguration(ApplicationProperties properties) {
+    this.properties = properties;
+  }
 
   @Bean
   public int clusters() {

@@ -1,0 +1,13 @@
+# Example configuration file
+
+spring:
+  main:
+    banner-mode: off
+
+cluster:
+  size: 50
+
+datastore:
+  host: getcruise.com
+  port: 8080
+  database_name: test-data

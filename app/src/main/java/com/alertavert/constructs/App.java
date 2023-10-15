@@ -13,10 +13,7 @@ import org.springframework.stereotype.Component;
 @SpringBootApplication
 @EnableConfigurationProperties
 @ConfigurationPropertiesScan
-@Component
-@Log
 public class App {
-
     public static void main(String[] args) {
         SpringApplication.run(App.class, args);
     }
